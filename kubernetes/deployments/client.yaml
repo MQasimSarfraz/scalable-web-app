@@ -1,0 +1,21 @@
+apiVersion: batch/v2alpha1
+kind: CronJob
+metadata:
+  name: client
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: client
+            image: "localhost:5000/client:v1"
+            command: [ "$(SERVER_URL)" ]
+            env:
+              - name: SERVER_URL
+                valueFrom:
+                configMapKeyRef:
+                name: server-location
+                key: server-url
+          restartPolicy: OnFailure
