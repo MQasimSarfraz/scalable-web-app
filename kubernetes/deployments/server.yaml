@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: server
 spec:
-  replicas: 5
+  replicas: 3
   template:
     metadata:
       labels:
@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
         - name: server
-          image: "localhost:5000/server:v2"
+          image: smqasims/server:v2
           ports:
           - containerPort: 8080

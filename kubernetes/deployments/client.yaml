@@ -10,12 +10,7 @@ spec:
         spec:
           containers:
           - name: client
-            image: "localhost:5000/client:v1"
-            command: [ "$(SERVER_URL)" ]
-            env:
-              - name: SERVER_URL
-                valueFrom:
-                configMapKeyRef:
-                name: server-location
-                key: server-url
-          restartPolicy: OnFailure
+            image: smqasims/client
+            args:
+            - "SERVER_URL"
+          restartPolicy: Never
