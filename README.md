@@ -6,7 +6,7 @@ A client-server based application to demostarte deployment and packaging abiliti
 - [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/) - Kubernetes flavor for single node developement environment. 
 - [Docker Registry](https://hub.docker.com/u/smqasims/) - Docker registry hosting application images. 
 
-You will need a kubernetes environment for running the application. Please refer to above documentation for installation.
+You will need a kubernetes environment for running the application. Please refer to above documentation for k8s installation.
 
 ## server
 The server is a docker based nginx server hosting our favourite ```Hello,World``` page. The docker image for server is available [here](https://hub.docker.com/r/smqasims/server/).
@@ -44,9 +44,10 @@ Client issues periodic HTTP request to server and has two configurable attribute
 - Node IP (required)
 - Time between each request (optional)
 
-Add the Node IP to client ```yaml``` using:
+Add the Node IP to client ```yaml``` using ```kubernetes/scripts/configure-client.sh``` as:
 ```
-bash kubernetes/scripts/configure-client.sh
+$ chmod +x configure-client.sh
+$ ./configure-client.sh
 ```
 You can also configure the time for HTTP request in ```client.yaml```. The format of the schedule string is explained [here](https://en.wikipedia.org/wiki/Cron). Now deploy client using:
 ```
@@ -72,10 +73,12 @@ $ kubectl apply -f kubernetes/deployments/server.yaml
 ## Docker images
 Images can be uploaded using ```scalable-web-app/app/build-image.sh``` script. Specify the required tags of images in the script and run it using:
 ```
-./build-image.sh
+$ chmod +x build-image.sh
+$ ./build-image.sh
 ```
 ## Cleanup
 Cleanup the application using ```scalable-web-app/kubernetes/scripts/cleanup.sh``` script:
 ```
-./cleanup.sh
+$ chmod +x cleanup.sh
+$ ./cleanup.sh
 ```
