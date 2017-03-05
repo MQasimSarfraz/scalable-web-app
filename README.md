@@ -37,12 +37,18 @@ For the server to be accessible it needs to be exposed as a service using:
 $ kubectl create -f kubernetes/services/server.yaml
 ```
 
+After this server will be accessible at Node_IP:Port where port is ```32525``` by default.
+
 ### client deployment
 Client issues periodic HTTP request to server and has two configurable attributes:
-- Server service endpoint (required)
+- Node IP (required)
 - Time between each request (optional)
 
-Edit the ```kubernetes/deployments/client.yaml``` with the required values. Replace ```SERVER_URL``` with the server service endpoint and ```schedule: "*/1 * * * *"``` to configure time between requests. The format of the schedule string is explained [here](https://en.wikipedia.org/wiki/Cron). Once done deploy the client using:
+Add the Node IP to client ```yaml``` using:
+```
+bash kubernetes/scripts/configure-client.sh
+```
+You can also configure the time for HTTP request in ```client.yaml```. The format of the schedule string is explained [here](https://en.wikipedia.org/wiki/Cron). Now deploy client using:
 ```
 $ kubectl create -f kubernetes/deployments/client.yaml
 ```
@@ -69,7 +75,7 @@ Images can be uploaded using ```scalable-web-app/app/build-image.sh``` script. S
 ./build-image.sh
 ```
 ## Cleanup
-Cleanup the application using ```scalable-web-app/kubernetes/cleanup.sh``` script:
+Cleanup the application using ```scalable-web-app/kubernetes/scripts/cleanup.sh``` script:
 ```
 ./cleanup.sh
 ```
