@@ -12,5 +12,5 @@ spec:
           - name: client
             image: smqasims/client
             args:
-            - "http://<NODE_IP>:32525"
+            - http://$(SERVER_SERVICE_HOST):$(SERVER_SERVICE_PORT)
           restartPolicy: Never

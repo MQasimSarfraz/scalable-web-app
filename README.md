@@ -37,19 +37,13 @@ For the server to be accessible it needs to be exposed as a service using:
 $ kubectl create -f kubernetes/services/server.yaml
 ```
 
-After this server will be accessible at Node_IP:Port where port is ```32525``` by default.
-
 ### client deployment
-Client issues periodic HTTP request to server and has two configurable attributes:
-- Node IP (required)
+Client issues periodic HTTP request to server and has following configurable attributes:
+
 - Time between each request (optional)
 
-Add the Node IP to client ```yaml``` using ```kubernetes/scripts/configure-client.sh``` as:
 ```
-$ chmod +x configure-client.sh
-$ ./configure-client.sh
-```
-You can also configure the time for HTTP request in ```client.yaml```. The format of the schedule string is explained [here](https://en.wikipedia.org/wiki/Cron). Now deploy client using:
+You can configure the time for HTTP request in ```client.yaml```. The format of the schedule string is explained [here](https://en.wikipedia.org/wiki/Cron). Now deploy client using:
 ```
 $ kubectl create -f kubernetes/deployments/client.yaml
 ```
