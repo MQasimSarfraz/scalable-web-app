@@ -42,7 +42,6 @@ Client issues periodic HTTP request to server and has following configurable att
 
 - Time between each request (optional)
 
-```
 You can configure the time for HTTP request in ```client.yaml```. The format of the schedule string is explained [here](https://en.wikipedia.org/wiki/Cron). Now deploy client using:
 ```
 $ kubectl create -f kubernetes/deployments/client.yaml
