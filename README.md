@@ -1,5 +1,5 @@
 # Scalable-web-app
-A client-server based application to demostarte deployment and packaging abilities of Kubernetes and Docker combination. Following is the list of tools along with useful documentation:
+A client-server based application to demonstrate deployment and packaging abilities of Kubernetes and Docker combination. Following is the list of tools along with useful documentation:
 
 - [Docker](https://docs.docker.com/) - Container runtime for packaging applications.
 - [Kubernetes](https://kubernetes.io/docs/) - Cluster manager for life cycle management of applications.
